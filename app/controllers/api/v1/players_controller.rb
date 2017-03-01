@@ -4,17 +4,22 @@ class Api::V1::PlayersController < ApplicationController
   end
 
   def create
-    @player = Player.create(
-                                first_name: params[:first_name],
-                                last_name: params[:last_name],
-                                position: params[:position],
-                                birthdate: params[:birthdate],
-                                pro_team: params[:pro_team],
-                                salary: params[:salary],
-                                location: params[:location],
-                                quote: params[:quote]
-                                )
-    render :show
+    @player = Player.new(
+                          first_name: params[:first_name],
+                          last_name: params[:last_name],
+                          position: params[:position],
+                          birthdate: params[:birthdate],
+                          pro_team: params[:pro_team],
+                          salary: params[:salary],
+                          location: params[:location],
+                          quote: params[:quote]
+                        )
+    if @player.save
+      render :show
+    else
+      render json: @player.errors.full_messages, status: 422
+    end
+
   end
 
   def update

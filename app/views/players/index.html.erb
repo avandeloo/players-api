@@ -1,0 +1,47 @@
+<h1>Players</h1>
+
+<div ng-app="app">
+<div ng-controller="playersController" ng-init="setup()">
+
+  <div>
+
+    <div ng-repeat="player in players">
+      <h4>{{ player.full_name }}</h4> 
+      <h5>{{ player.birthday }}</h5> 
+    </div> 
+
+  </div>
+  <p>---------------------------------------------</p>
+  <h3>Add A Player</h3>
+  <div>
+    <li ng-repeat="error in errors">{{ error }}</li>
+    First Name: <input type="text" ng-model="newPlayerFirstName">
+  </div>
+  <div>
+    Last Name: <input type="text" ng-model="newPlayerLastName">
+  </div>
+  <div>
+    Position: <input type="text" ng-model="newPlayerPosition">
+  </div>
+  <div>
+    Birthday: <input type="text" ng-model="newPlayerBirthday">
+  </div>
+  <div>
+    Pro Team: <input type="text" ng-model="newPlayerProTeam">
+  </div>
+  <div>
+    Salary: <input type="text" ng-model="newPlayerSalary">
+  </div>
+  <div>
+    Location: <input type="text" ng-model="newPlayerLocation">
+  </div>
+  <div>
+    Quote: <input type="text" ng-model="newPlayerQuote">
+  </div>
+  <button ng-click="addPlayer(newPlayerFirstName, newPlayerLastName, newPlayerPosition, newPlayerBirthday, newPlayerProTeam, newPlayerSalary, newPlayerLocation, newPlayerQuote)">Add Player</button>
+  <p>---------------------------------------------</p>
+  <div>
+    <h4>| Number Of Players: {{ players.length }} |</h4>
+  </div>
+</div>
+</div>
